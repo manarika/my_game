@@ -1,0 +1,89 @@
+body{
+    position: relative;
+
+    width: 80%;
+    height: 80%;
+    margin-top: 5%;
+    margin-left: 10%;
+    border: saddlebrown 2px solid;
+
+}
+#coin{
+    position: absolute;
+    top:100px;
+    left: 200px;
+    display: none;
+}
+#head{
+    height: 10%;
+    width: 80%;
+    margin-left: 10%;
+    border-bottom: black 2px solid;
+}
+#score{
+    height: 10%;
+    width: 80%;
+    margin-left: 10%;
+    border-bottom: black 2px solid;
+
+}
+#BODY{
+    width: 800px;
+    height: 125px;
+    margin-left: 10%;
+    border-bottom: black 2px solid;
+
+
+
+}
+#foot{
+    width: 80%;
+    height: 15%;
+    margin-left: 10%;
+    border-bottom: black 2px solid;
+
+}
+#maria{
+    position: relative;
+    cursor: pointer;
+    width: 105px;
+    height: 108px;
+    background-image: url("Run.png");
+    background-size: cover;
+
+
+}
+
+
+@keyframes animatedBackground {
+    from {
+        background-position: 0;
+    }
+    to {
+        background-position: 100%;
+    }
+}
+
+#BODY {
+    background-image: url('background.jpg');
+    background-position: 0px 0px;
+    background-repeat: repeat-x;
+    animation: none ;
+}
+#addscore{
+    color: green;
+    font-size: 20px;
+    display: none;
+}
+
+#monster{
+    position: relative;
+    cursor: pointer;
+    width: 105px;
+    height: 105px;
+    top:-110px;
+    left: 200px;
+    background-size: cover;
+    background-image: url("pngwing.com.png");
+}
+

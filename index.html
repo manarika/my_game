@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta aria-describedby="it's a game">
+    <link rel="stylesheet" href="mystyle.css">
+    <title>maria</title>
+</head>
+<body>
+<div id="head"> CLICK ENTER TO START THE GAME </div>
+SCORE:<div id="score">   </div><span id="addscore">+20</span>
+
+<div id="BODY" >
+   <div id="maria"> </div>
+</div>
+<div id="coin"><img src="Star-Game-Gold-Coin.png" width="25" height="25" ></div>
+<div id="monster"></div>
+
+
+<div id="foot">
+    <button  onclick="functio()">start</button>
+</div>
+
+
+</body>
+</html>
+<script src="jquery-3.6.4.js"></script>
+<script src="function.js"></script>
+
+<script >
+   let maria=document.getElementById("maria")
+    let monster=document.getElementById("monster")
+    let score=0
+    document.getElementById("score").innerHTML=score
+    let randomBoolean = Math.random() >= 0.5;
+    let flag=true
+
+
+    function functio() {
+        let picar=200
+         let score=0
+         let coin=  $('#coin')
+         let maria2=  $('#maria')
+        let monster2=  $('#monster')
+
+        let pixelt=0
+        pixelt=pixelt+22
+        let a=300
+        monster.style.left = 300 + 'px';
+        maria.style.bottom=pixelt+ 'px';
+        document.getElementById("BODY").style.animation='animatedBackground 20s linear  infinite reverse'
+         let start = Date.now();
+        let timer = setInterval( function () {
+            if (flag){
+                console.log(collision2(coin,maria2))
+                let timePassed = Date.now() - start;
+                let pixel = timePassed / 200;
+                maria.style.left = pixel + 'px';
+                a=a-10
+                monster.style.left = a + 'px';
+
+                setTimeout(function ()
+                {
+                    maria.style.backgroundImage = "url('Run2.png')"
+                }, 0);
+                setTimeout(function () {
+                    maria.style.backgroundImage = "url('Run3.png')"
+                }, 100);
+        setTimeout(function () {
+            maria.style.backgroundImage = "url('Run4.png')"
+        }, 100);
+        if (pixel > 10) {
+            score = score + 1;
+            document.getElementById("score").innerHTML = score
+        }
+        if (pixel > 660 || collision(monster2,maria2) ) {
+            clearInterval(timer);
+            document.getElementById("BODY").style.animation = 'none'
+        }
+            }
+
+            window.onkeydown = function (event) {
+                if (event.keyCode === 32 ) {
+                    flag = false;
+                    maria.src = "Jump 1.png";
+                    event.preventDefault();
+                    pixelt = pixelt + 50;
+                    maria.style.bottom = pixelt + 'px';
+                    setTimeout(() => {
+                        flag = true;
+                        maria.src = "Jump 1.png";
+                        pixelt = pixelt - 50;
+                        maria.style.bottom = pixelt + 'px';
+                    }, 200);
+                }
+            }
+
+            if(document.getElementById("coin").style.display==="block"){
+
+                if(collision(coin,maria2)){
+                    if(randomBoolean){
+                        document.getElementById("coin").style.top =  50+'px';
+                    }
+                    else  document.getElementById("coin").style.top =  100+'px';
+
+                    document.getElementById("coin").style.display='none'
+                     picar=picar+100
+                    document.getElementById("coin").style.left =  picar+'px';
+                    document.getElementById("addscore").style.display='block'
+                    setTimeout(function () {
+                        document.getElementById("addscore").style.display='none'
+                    },1000)
+                    score=score+20
+                }
+            }
+    }, 200);
+        setInterval( function () {
+         setTimeout(function () {
+             document.getElementById("coin").style.display="block"
+         },5000)
+    }, 6000);
+
+}</script>
+
